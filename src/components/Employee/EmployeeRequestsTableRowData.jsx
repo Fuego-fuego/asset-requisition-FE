@@ -1,15 +1,32 @@
 
 const EmployeeRequestsTableRowData = (request) => {
-    // const {asset,status}= request.request    
-    // console.table(request.request )
+    const {asset,status}= request.request
+    // TODO: 
+    // console.log(request )
     // console.table(asset)
+    let statusColor = ""
+
+    switch(status){
+        case "pending":
+            statusColor="status-pending"
+            break
+        case"approved":
+            statusColor="status-approved"
+            break
+        case"denied":
+            statusColor="status-denied"
+            break
+        default:
+            statusColor ="status-unknown"
+    }
+    
   return (            
         <tr className="table-row | text-300 capitalize">
-            <td className="table-data" data-cell="name">Lorem, ipsum.</td>
-            <td className="table-data" data-cell="category">Lorem.</td>
-            <td className="table-data" data-cell="type">Lorem.</td>
-            <td className="table-data" data-cell="serial">adipisicing.</td>
-            <td className="table-data | lowercase italic" data-cell="status">Lorem.</td>
+            <td className="table-data" data-cell="name">{asset.name}</td>
+            <td className="table-data" data-cell="category">{asset.category}</td>
+            <td className="table-data" data-cell="type">{asset.asset_type}</td>
+            <td className="table-data" data-cell="serial">{asset.serial_number}</td>
+            <td className="table-data | lowercase italic" data-cell="status"><span className={statusColor}>{status}</span></td>
             {/* Action Buttons */}
             <td className="employee-requests-table-actions | flex table-data" data-cell="action-btns">
                 <div className="details-icon | stroke-accent-700 actions-icon">

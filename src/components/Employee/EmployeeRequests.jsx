@@ -30,6 +30,7 @@ const localStoredAccount = localStorage.getItem('arsUserAccount') ? true : false
     let token = "";
     if(localStoredAccount){
        token = localStorage.getItem('token')
+       
 
     }
     try{
@@ -48,7 +49,7 @@ const localStoredAccount = localStorage.getItem('arsUserAccount') ? true : false
   }
   getUserRequests()
   },[])
-
+  console.log(displayedRequests)
   return (
     <div className="employee-requests-table-wrapper | shadow text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-800">
     <div className="employee-requests-header-wrapper">
@@ -85,6 +86,7 @@ const localStoredAccount = localStorage.getItem('arsUserAccount') ? true : false
           </tr>
         </thead>
         <tbody>
+          {displayedRequests.map((request => <EmployeeRequestsTableRowData key={request.id} request={request}/>))}
         </tbody>
       </table>
 
