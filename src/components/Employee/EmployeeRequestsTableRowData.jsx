@@ -1,14 +1,15 @@
 
 const EmployeeRequestsTableRowData = (request) => {
-        const {title,category,price,} = request
-    
+    // const {asset,status}= request.request    
+    // console.table(request.request )
+    // console.table(asset)
   return (            
         <tr className="table-row | text-300 capitalize">
-            <td className="table-data" data-cell="name">{title}</td>
-            <td className="table-data" data-cell="category">{category}</td>
-            <td className="table-data" data-cell="type">laptop</td>
-            <td className="table-data" data-cell="serial">{price * 100}</td>
-            <td className="table-data | lowercase italic" data-cell="status">pending...</td>
+            <td className="table-data" data-cell="name">Lorem, ipsum.</td>
+            <td className="table-data" data-cell="category">Lorem.</td>
+            <td className="table-data" data-cell="type">Lorem.</td>
+            <td className="table-data" data-cell="serial">adipisicing.</td>
+            <td className="table-data | lowercase italic" data-cell="status">Lorem.</td>
             {/* Action Buttons */}
             <td className="employee-requests-table-actions | flex table-data" data-cell="action-btns">
                 <div className="details-icon | stroke-accent-700 actions-icon">

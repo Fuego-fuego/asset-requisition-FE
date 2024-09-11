@@ -10,7 +10,7 @@ const employeeRequestsReducer = (state,action) =>{
     case"search":
         return {...state,search:action.payload}
     case"requests":
-      return {...state,request:action.payload}
+      return {...state,requests:action.payload}
   }
 }
 
@@ -21,30 +21,34 @@ const [state,dispatch] = useReducer(employeeRequestsReducer,{
                                                             requests:[]
 })
 const [displayedRequests,setDisplayedRequests] = useState([])
-const [token, setToken] = useState("")
-const localStoredAccount = localStorage.getItem('arsUseraccount') ? true : false
+
+const localStoredAccount = localStorage.getItem('arsUserAccount') ? true : false
+
   useEffect(() =>{
 
   const getUserRequests = async () =>{
-
+    let token = "";
     if(localStoredAccount){
-      setToken(localStorage.getItem('token'))    }
+       token = localStorage.getItem('token')
+
+    }
     try{
       const resp = await api.get("requests/user/",{
-        headers: {
-        'Authorization':`Token ${token}`
-        }
-      })
-      console.log(resp)
+      headers: { 
+      'Authorization':`Token ${token}`,
+      'Content-Type': 'application/json'}
+
+    })
+    dispatch({type:'requests',payload:resp.data})     
+    setDisplayedRequests(resp.data)
     }
     catch(err){      
       throw new Error ("Error fetching user requests",err)
     }
   }
   getUserRequests()
-
   },[])
-  // console.log(localStorage.getItem('token'))
+
   return (
     <div className="employee-requests-table-wrapper | shadow text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-800">
     <div className="employee-requests-header-wrapper">

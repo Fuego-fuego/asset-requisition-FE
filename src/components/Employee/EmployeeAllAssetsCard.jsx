@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom"
-
 import PropTypes from 'prop-types';  
 
 
 const EmployeeAllAssetsCard = ({asset}) => {
     const {id,name,category,serial_number,tag,asset_type} = asset
+
+    const handleRequest = () => {        
+    }
         return (
         <div className="md:employee-all-asset-card-md sm:employee-all-asset-card-sm | shadow grid bg-neutral-100 dark:bg-neutral-600 dark:text-neutral-200">
             {/* Card Img */}
@@ -26,9 +28,7 @@ const EmployeeAllAssetsCard = ({asset}) => {
             </div>
         </div>
 )
-
 }
-
 export default EmployeeAllAssetsCard
 
 
