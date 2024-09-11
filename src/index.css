@@ -20,12 +20,17 @@
     --border-radius: 10px;
     --table-heading-c: rgb(0, 113, 141);
     --table-row-bg-variation: rgb(231, 231, 231);
+    /* status colors */
+    --status-unknown: #000;
+    --status-pending: rgb(3, 186, 231);
+    --status-approved: rgb(3, 235, 3);
+    --status-denied: rgb(202, 3, 3);
 
 }
 
 .dark {
-    --scroll-bar-c: #555;
-    --scroll-bar-bg: #2c2c2c;
+    --scroll-bar-c: rgb(85, 85, 85);
+    --scroll-bar-bg: rgb(44, 44, 44);
     --auth-bg-overlay: rgba(0, 0, 0, 0.85);
     --error-bg-overlay: rgba(0, 0, 0, 0.85);
     --primary-btn-c: #FFF;
@@ -35,6 +40,11 @@
     --caption-color: var(--table-heading-c);
     --table-heading-c: rgba(0, 0, 0, 0.3);
     --table-row-bg-variation: rgba(0, 0, 0, 0.301);
+    /* status colors */
+    --status-unknown: #FFF;
+    --status-pending: rgb(89, 190, 216);
+    --status-approved: rgb(14, 122, 14);
+    --status-denied: #8b0101;
 }
 
 /* 1. Defaults */
@@ -646,8 +656,31 @@ select {
     padding-block-start: 1.5rem;
 }
 
-
+/* Table Status */
 /* 6.2 Employee */
+.status-unknown,
+.status-approved,
+.status-denied
+{
+font-style:normal;
+}
+
+.status-unknown {
+    color: var(--status-unknown);
+
+}
+
+.status-pending {
+    color: var(--status-pending);
+}
+
+.status-approved {
+    color: var(--status-approved);
+}
+
+.status-denied {
+    color: var(--status-denied);
+}
 
 /* 6.2.2 Employee Requests */
 
@@ -907,5 +940,3 @@ select {
         --spacer: 0.3rem;
     }
 }
-
-
