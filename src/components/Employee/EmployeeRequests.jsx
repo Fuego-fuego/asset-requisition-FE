@@ -11,6 +11,8 @@ const employeeRequestsReducer = (state,action) =>{
         return {...state,search:action.payload}
     case"requests":
       return {...state,requests:action.payload}
+    default:
+      throw new Error("action type is undefined")
   }
 }
 
@@ -49,7 +51,7 @@ const localStoredAccount = localStorage.getItem('arsUserAccount') ? true : false
   }
   getUserRequests()
   },[])
-  console.log(displayedRequests)
+console.log(displayedRequests)
   return (
     <div className="employee-requests-table-wrapper | shadow text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-800">
     <div className="employee-requests-header-wrapper">
@@ -86,7 +88,7 @@ const localStoredAccount = localStorage.getItem('arsUserAccount') ? true : false
           </tr>
         </thead>
         <tbody>
-          {displayedRequests.map((request => <EmployeeRequestsTableRowData key={request.id} request={request}/>))}
+          {displayedRequests.filter((request)=>state.search ==='' ?request:request.asset.name.toLowerCase().includes(state.search.toLowerCase()) ||request.asset.asset_type.toLowerCase().includes(state.search.toLowerCase())).map((request => <EmployeeRequestsTableRowData key={request.id} request={request}/>))}
         </tbody>
       </table>
 
